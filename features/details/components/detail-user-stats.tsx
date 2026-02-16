@@ -1,6 +1,7 @@
 import { Devider } from '@/components/devider';
 import { UserSkeleton } from '@/components/skeleton';
 import { Button } from '@/components/ui/button';
+import AddPost from '@/features/profile-add-post/page';
 import { TPublicProfile } from '@/types/user-types';
 import Image from 'next/image';
 

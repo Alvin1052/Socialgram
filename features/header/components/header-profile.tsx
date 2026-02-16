@@ -1,11 +1,10 @@
 'use client';
 import { Button } from '@/components/ui/button';
 
+import { UserSkeleton } from '@/components/skeleton';
+import { CapitalizeFirstLetter } from '@/helper/convert-ui-text';
 import Link from 'next/link';
 import useProfile from '../hooks/use-profile';
-import Image from 'next/image';
-import { CapitalizeFirstLetter, Initials } from '@/helper/convert-ui-text';
-import { UserSkeleton } from '@/components/skeleton';
 
 const HeaderProfile = () => {
   // const isToken = localStorage.getItem('token');

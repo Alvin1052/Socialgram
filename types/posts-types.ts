@@ -8,6 +8,11 @@ type TGetPostsData = {
   pagination: TGetPostsPagination;
 };
 
+export interface TPayloadPostPost {
+  photo: File;
+  caption: string;
+}
+
 export type TResGetPosts = TBaseSuccessResponse<TGetPostsData>;
 
 export type TResPostPost = TBaseSuccessResponse<TPost>;

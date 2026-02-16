@@ -3,12 +3,9 @@ import { TLoginSuccessResponse } from '@/types/auth-types';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useMutation } from '@tanstack/react-query';
 
-import { RouteToHome } from '../helper/routing';
-import { TloginScheme, loginScheme } from '../validations/auth';
-import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
-import { setCookie } from '@/helper/cookie-function';
-import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { TloginScheme, loginScheme } from '../validations/auth';
 
 export const useLoginForms = () => {
   // const [tokenToSet, setTokenToSet] = useState<string | null>(null);
@@ -33,16 +30,9 @@ export const useLoginForms = () => {
 
     onSuccess: (res: TLoginSuccessResponse) => {
       localStorage.setItem('token', res?.data?.token || '');
-
-      // setCookie('token', res?.data?.token || '', 1);
+      cookieStore.set('token', res?.data?.token || '');
       router.push('/');
-      // console.log(res);
     },
-
-    // onError: (error: any) => {
-    //   console.log(error);
-    //   // setErrorMessage(error?.response?.data?.message);
-    // },
   });
 
   const onSubmit = async (data: TloginScheme) => {

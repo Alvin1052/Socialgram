@@ -1,12 +1,10 @@
 'use client';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Bookmark } from 'lucide-react';
-import { useMe } from './hooks/use-me-profile';
 import UserLikesPostsComponents from '../details/components/detail-user-likes';
 import UserPostsComponents from '../details/components/detail-user-posts';
 import Profile from '../details/components/detail-user-stats';
-import { useProfile } from '../details/hooks/use-user-profile';
-import { useAuthContext } from '@/context/useAuthContext';
+import { useMe } from './hooks/use-me-profile';
 
 const MyProfile = () => {
   const { UserPosts, UserLikedPost, ProfileUser, isLoading } = useMe();

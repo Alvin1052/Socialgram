@@ -1,4 +1,5 @@
 import {
+  TPayloadPostPost,
   TResDeletePost,
   TResGetPostById,
   TResGetPosts,
@@ -14,7 +15,9 @@ export const getPosts = async (
   return res.data;
 };
 
-export const postPost = async (payload: FormData): Promise<TResPostPost> => {
+export const postPost = async (
+  payload: TPayloadPostPost
+): Promise<TResPostPost> => {
   const res = await api.post('/posts', payload);
   return res.data;
 };

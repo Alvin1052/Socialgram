@@ -24,9 +24,11 @@ const FooterClient = () => {
         <House width={24} height={24} />
         <p className='text-md font-bold'>Home</p>
       </button>
+
       <Button className='flex-center bg-primary-300 h-12 w-12 rounded-full'>
         <Plus width={24} height={24} />
       </Button>
+
       <button
         className={cn(
           'flex w-23.5 flex-col items-center justify-center gap-1',

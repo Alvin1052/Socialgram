@@ -5,6 +5,7 @@ import {
   TResGetMyProfile,
 } from '@/types/profile-types';
 import api from './api';
+import { TupdatePostValidation } from '@/features/profile-update-post/validation/update-post-validation';
 
 export const getMyProfile = async (): Promise<TResGetMyProfile> => {
   const res = await api.get('/me');
@@ -12,7 +13,7 @@ export const getMyProfile = async (): Promise<TResGetMyProfile> => {
 };
 
 export const patchProfile = async (
-  payload: PatchProfilePayload
+  payload: TupdatePostValidation
 ): Promise<TResGetMyProfile> => {
   const res = await api.patch('/me', payload);
   return res.data;
