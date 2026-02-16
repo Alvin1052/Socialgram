@@ -9,7 +9,6 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'res.cloudinary.com',
       },
-      new URL(process.env.NEXT_PUBLIC_API_IMAGE_URL as string),
     ],
   },
 };
