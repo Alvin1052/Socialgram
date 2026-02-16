@@ -18,7 +18,7 @@ const HeaderProfile = () => {
     <div className='flex items-center justify-between gap-6'>
       {/* Profile */}
       {isToken ? (
-        <div className='flex items-center gap-3'>
+        <Link href={`/profile`} className='flex items-center gap-3'>
           <UserSkeleton
             User={ProfileUser.profile}
             className='flex-center size-12 object-fill text-3xl'
@@ -27,15 +27,13 @@ const HeaderProfile = () => {
           <div className='flex flex-col'>
             <div className='text-lg font-semibold'>
               {CapitalizeFirstLetter(
-                ProfileUser.profile.name !== ''
-                  ? ProfileUser.profile.name
-                  : ProfileUser.profile.username !== ''
-                    ? ProfileUser.profile.username
-                    : 'Guest'
+                ProfileUser.profile.username
+                  ? ProfileUser.profile.username
+                  : 'Guest'
               )}
             </div>
           </div>
-        </div>
+        </Link>
       ) : (
         // Register and Login
         <div className='flex items-center gap-4'>

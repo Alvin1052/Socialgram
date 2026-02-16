@@ -2,18 +2,18 @@ import { TPayloadParams } from '@/types/general-types';
 import {
   PatchProfilePayload,
   TResGetMyPost,
-  TResGetProfile,
+  TResGetMyProfile,
 } from '@/types/profile-types';
 import api from './api';
 
-export const getProfile = async (): Promise<TResGetProfile> => {
+export const getMyProfile = async (): Promise<TResGetMyProfile> => {
   const res = await api.get('/me');
   return res.data;
 };
 
 export const patchProfile = async (
   payload: PatchProfilePayload
-): Promise<TResGetProfile> => {
+): Promise<TResGetMyProfile> => {
   const res = await api.patch('/me', payload);
   return res.data;
 };

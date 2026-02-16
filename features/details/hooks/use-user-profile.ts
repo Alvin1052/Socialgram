@@ -43,6 +43,9 @@ export const useProfile = (userName: string) => {
     UserPosts,
     UserLikedPost,
     isLoading:
-      isLoadingProfileUser && isLoadingUserPosts && isLoadingProfileLikes,
+      isLoadingProfileUser || isLoadingProfileLikes || isLoadingUserPosts,
+    errorProfileUser,
+    errorProfileLikes,
+    errorUserPosts,
   };
 };

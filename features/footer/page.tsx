@@ -1,7 +1,7 @@
 'use client';
-import { House, Plus, User2Icon } from 'lucide-react';
-import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { House, Plus, User2Icon } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
 const FooterClient = () => {

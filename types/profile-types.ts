@@ -8,12 +8,12 @@ type TUserStats = {
   likes: number;
 };
 
-type TResGetProfileData = {
+type TResGetMyProfileData = {
   profile: TUserProfile;
   stats: TUserStats;
 };
 
-export type TResGetProfile = TBaseSuccessResponse<TResGetProfileData>;
+export type TResGetMyProfile = TBaseSuccessResponse<TResGetMyProfileData>;
 
 export interface PatchProfilePayload {
   name: string | null;

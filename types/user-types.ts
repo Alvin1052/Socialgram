@@ -46,10 +46,13 @@ type TCounts = {
   following: number;
   likes: number;
 };
-type TGetPublicProfileData = TUserProfile & {
+
+export type TPublicProfile = TUserProfile & {
   counts: TCounts;
   isFollowing: boolean;
   isMe: boolean;
 };
+
+type TGetPublicProfileData = TPublicProfile;
 
 export type TResGetPublicProfile = TBaseSuccessResponse<TGetPublicProfileData>;

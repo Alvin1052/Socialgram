@@ -1,23 +1,20 @@
 import React from 'react';
-import { useProfile } from '../hooks/use-profile';
 
 import { GalleryCard } from '@/components/gallery-card';
+import { TPost } from '@/types/general-types';
 
 interface UserLikesPostsProps {
-  username: string;
+  Post: TPost[];
 }
 
-const UserLikesPosts: React.FC<UserLikesPostsProps> = ({ username }) => {
-  const { UserLikedPost, isLoading } = useProfile(username);
-  if (isLoading) return <div>loading...</div>;
-
+const UserLikesPostsComponents: React.FC<UserLikesPostsProps> = ({ Post }) => {
   return (
     <div className='grid grid-cols-3 items-center justify-center gap-1'>
-      {UserLikedPost.map((item) => (
+      {Post.map((item) => (
         <GalleryCard post={item} key={item.id} />
       ))}
     </div>
   );
 };
 
-export default UserLikesPosts;
+export default UserLikesPostsComponents;

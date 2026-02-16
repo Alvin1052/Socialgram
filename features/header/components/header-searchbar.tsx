@@ -7,6 +7,7 @@ import { useSearchbar } from '../hooks/use-searchbar';
 import { TUser } from '@/types/auth-types';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 // const User: TAuthor = {
 //   name: 'John Doe',
@@ -36,11 +37,12 @@ const HeaderSearchbar = () => {
           <ScrollArea className='no-scrollbar h-fit max-h-75 overflow-y-scroll'>
             <div className='flex flex-col gap-4'>
               {listUser.map((User, i) => (
-                <ListProfileName
-                  key={i}
-                  User={User}
-                  className='hover:bg-neutral-800'
-                />
+                <Link href={`/${User.username}`} key={i}>
+                  <ListProfileName
+                    User={User}
+                    className='hover:bg-neutral-800'
+                  />
+                </Link>
               ))}
             </div>
           </ScrollArea>

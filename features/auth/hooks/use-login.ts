@@ -53,7 +53,7 @@ export const useLoginForms = () => {
     register,
     onSubmit,
     handleSubmit,
-    errorMessage: post.error?.response?.data?.message,
+    errorMessage: post.error?.message,
     formstate: { errors, isSubmitting },
     errors,
 

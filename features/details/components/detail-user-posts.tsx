@@ -1,22 +1,22 @@
 import React from 'react';
-import { useProfile } from '../hooks/use-profile';
 
 import { GalleryCard } from '@/components/gallery-card';
+import { TPost } from '@/types/general-types';
 
 interface UserPostsProps {
-  username: string;
+  Post: TPost[];
 }
 
-const UserPosts: React.FC<UserPostsProps> = ({ username }) => {
-  const { UserPosts } = useProfile(username);
-
-  return (
+const UserPostsComponents: React.FC<UserPostsProps> = ({ Post }) => {
+  return Post.length > 0 ? (
     <div className='grid grid-cols-3 items-center justify-center gap-1'>
-      {UserPosts.map((item) => (
+      {Post.map((item) => (
         <GalleryCard post={item} key={item.id} />
       ))}
     </div>
+  ) : (
+    <div>No Post</div>
   );
 };
 
-export default UserPosts;
+export default UserPostsComponents;

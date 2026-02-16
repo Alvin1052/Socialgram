@@ -1,23 +1,17 @@
 'use client';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Bookmark } from 'lucide-react';
-import React from 'react';
-import UserLikesPostsComponents from './components/detail-user-likes';
-import UserPostsComponents from './components/detail-user-posts';
-import Profile from './components/detail-user-stats';
-import { useProfile } from './hooks/use-user-profile';
+import { useMe } from './hooks/use-me-profile';
+import UserLikesPostsComponents from '../details/components/detail-user-likes';
+import UserPostsComponents from '../details/components/detail-user-posts';
+import Profile from '../details/components/detail-user-stats';
+import { useProfile } from '../details/hooks/use-user-profile';
+import { useAuthContext } from '@/context/useAuthContext';
 
-interface ProfileDetailsProps {
-  username: string;
-}
+const MyProfile = () => {
+  const { UserPosts, UserLikedPost, ProfileUser, isLoading } = useMe();
 
-const Details: React.FC<ProfileDetailsProps> = ({ username }) => {
-  const { UserPosts, ProfileUser, UserLikedPost, isLoading } =
-    useProfile(username);
-
-  if (isLoading || !ProfileUser || !UserPosts || !UserLikedPost)
-    return <div>Loading...</div>;
-
+  if (isLoading) return <div>Loading...</div>;
   return (
     <div className='flex w-full flex-col gap-4'>
       {/* Profile Content */}
@@ -49,4 +43,4 @@ const Details: React.FC<ProfileDetailsProps> = ({ username }) => {
   );
 };
 
-export default Details;
+export default MyProfile;

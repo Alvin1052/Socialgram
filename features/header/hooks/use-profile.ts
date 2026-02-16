@@ -1,10 +1,10 @@
-import { getProfile } from '@/services/profile-services';
+import { getMyProfile } from '@/services/profile-services';
 import { useQuery } from '@tanstack/react-query';
 
 const useProfile = () => {
   const { data, isLoading, error } = useQuery({
     queryKey: ['Profile'],
-    queryFn: async () => await getProfile().then((res) => res?.data),
+    queryFn: async () => await getMyProfile().then((res) => res?.data),
   });
 
   return { ProfileUser: data, isLoading, error };
