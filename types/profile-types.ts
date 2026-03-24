@@ -1,7 +1,7 @@
 import { TBaseSuccessResponse } from './base-types';
-import { TUserProfile } from './general-types';
+import { TPost, TUserProfile } from './general-types';
 
-type TUserStats = {
+export type TUserStats = {
   posts: number;
   followers: number;
   following: number;
@@ -31,17 +31,6 @@ type TGetMyPostAuthor = Pick<
   'id' | 'name' | 'username' | 'avatarUrl'
 >;
 
-interface TGetMyPostItems {
-  id: number;
-  imageUrl: string;
-  caption: string;
-  createdAt: string;
-  author: TGetMyPostAuthor;
-  likeCount: number;
-  commentCount: number;
-  likedByMe: boolean;
-}
-
 interface TGetMyPostPagination {
   page: number;
   limit: number;
@@ -50,7 +39,7 @@ interface TGetMyPostPagination {
 }
 
 interface TResGetMyPostData {
-  items: TGetMyPostItems[];
+  items: TPost[];
   pagination: TGetMyPostPagination;
 }
 

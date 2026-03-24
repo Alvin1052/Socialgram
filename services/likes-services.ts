@@ -5,6 +5,7 @@ import {
   TResPostLike,
 } from '@/types/like-types';
 import api from './api';
+import { TPayloadParams } from '@/types/general-types';
 
 export const postLikes = async (PostId: string): Promise<TResPostLike> => {
   const res = await api.post(`/posts/${PostId}/like`);
@@ -23,7 +24,9 @@ export const getUsersLikes = async (
   return res.data;
 };
 
-export const getPostMeLikes = async (): Promise<TResGetPostMeLike> => {
-  const res = await api.get(`/me/like`);
+export const getPostMeLikes = async (
+  Params?: TPayloadParams
+): Promise<TResGetPostMeLike> => {
+  const res = await api.get(`/me/likes`, { params: Params });
   return res.data;
 };

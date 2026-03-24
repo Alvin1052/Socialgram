@@ -1,4 +1,4 @@
-import z, { file } from 'zod';
+import z from 'zod';
 
 const ACCEPTED_IMAGE_TYPES = [
   'image/jpeg',

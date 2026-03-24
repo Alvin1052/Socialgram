@@ -1,19 +1,32 @@
 'use client';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Bookmark } from 'lucide-react';
-import UserLikesPostsComponents from '../details/components/detail-user-likes';
-import UserPostsComponents from '../details/components/detail-user-posts';
-import Profile from '../details/components/detail-user-stats';
+
+import MyProfileCard from './components/my-profile';
 import { useMe } from './hooks/use-me-profile';
+import UserPostsComponents from './components/profile-posts';
+import UserLikesPostsComponents from './components/profile-likes';
 
 const MyProfile = () => {
-  const { UserPosts, UserLikedPost, ProfileUser, isLoading } = useMe();
+  const { MyLikesPosts, MyPosts, ProfileUser, isError, isLoading, error } =
+    useMe();
 
-  if (isLoading) return <div>Loading...</div>;
+  if (
+    isLoading ||
+    isError ||
+    !MyPosts.data?.items ||
+    !MyLikesPosts.data?.posts ||
+    !ProfileUser?.data
+  )
+    return <div>Loading...</div>;
+
   return (
     <div className='flex w-full flex-col gap-4'>
       {/* Profile Content */}
-      <Profile profile={ProfileUser} />
+      <MyProfileCard
+        profile={ProfileUser.data.profile}
+        stats={ProfileUser.data.stats}
+      />
       {/* Gallery */}
       <Tabs defaultValue={'Gallery'}>
         <TabsList className='flex-center'>
@@ -31,10 +44,10 @@ const MyProfile = () => {
           </TabsTrigger>
         </TabsList>
         <TabsContent value='Gallery' className='min-h-screen'>
-          <UserPostsComponents Post={UserPosts} />
+          <UserPostsComponents Post={MyPosts?.data?.items} />
         </TabsContent>
         <TabsContent value='Liked' className='min-h-screen'>
-          <UserLikesPostsComponents Post={UserLikedPost} />
+          <UserLikesPostsComponents Post={MyLikesPosts?.data?.posts} />
         </TabsContent>
       </Tabs>
     </div>

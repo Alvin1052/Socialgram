@@ -28,7 +28,7 @@ export const useLoginForms = () => {
     mutationFn: async (payload: TloginScheme): Promise<TLoginSuccessResponse> =>
       PostLogin(payload),
 
-    onSuccess: (res: TLoginSuccessResponse) => {
+    onSuccess: (res) => {
       localStorage.setItem('token', res?.data?.token || '');
       cookieStore.set('token', res?.data?.token || '');
       router.push('/');

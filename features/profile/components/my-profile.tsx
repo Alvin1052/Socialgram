@@ -1,17 +1,17 @@
 import { Devider } from '@/components/devider';
 import { UserSkeleton } from '@/components/skeleton';
 import { Button } from '@/components/ui/button';
-import AddPost from '@/features/profile-add-post/page';
 import { TUserProfile } from '@/types/general-types';
-import { TPublicProfile } from '@/types/user-types';
+import { TUserStats } from '@/types/profile-types';
 import Image from 'next/image';
 
 interface ProfileProps {
-  profile: TPublicProfile | undefined;
+  profile: TUserProfile;
+  stats: TUserStats;
 }
 
-const Profile: React.FC<ProfileProps> = ({ profile }) => {
-  if (!profile) return <div>Loading...</div>;
+const MyProfileCard: React.FC<ProfileProps> = ({ profile, stats }) => {
+  if (!profile || !stats) return <div>Loading...</div>;
 
   return (
     <div className='flex w-full flex-col gap-4'>
@@ -43,24 +43,24 @@ const Profile: React.FC<ProfileProps> = ({ profile }) => {
       {/* Stats */}
       <div className='flex h-16.5 w-full items-center justify-between gap-6'>
         <div className='flex w-full flex-col items-center gap-0.5'>
-          <div className='text-xl font-bold'>{profile?.counts.post}</div>
+          <div className='text-xl font-bold'>{stats.posts}</div>
           <p className='text-md font-regular text-neutral-400'>Post</p>
         </div>
         <Devider />
         <div className='flex w-full flex-col items-center gap-0.5'>
-          <div className='text-xl font-bold'>{profile?.counts.followers}</div>
+          <div className='text-xl font-bold'>{stats.followers}</div>
           <p className='text-md font-regular text-neutral-400'>Follower</p>
         </div>
         <Devider />
 
         <div className='flex w-full flex-col items-center gap-0.5'>
-          <div className='text-xl font-bold'>{profile?.counts.following}</div>
+          <div className='text-xl font-bold'>{stats.following}</div>
           <p className='text-md font-regular text-neutral-400'>Following</p>
         </div>
         <Devider />
 
         <div className='flex w-full flex-col items-center gap-0.5'>
-          <div className='text-xl font-bold'>{profile?.counts.likes}</div>
+          <div className='text-xl font-bold'>{stats.likes}</div>
           <p className='text-md font-regular text-neutral-400'>Likes</p>
         </div>
       </div>
@@ -68,4 +68,4 @@ const Profile: React.FC<ProfileProps> = ({ profile }) => {
   );
 };
 
-export default Profile;
+export default MyProfileCard;

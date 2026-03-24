@@ -25,7 +25,6 @@ const AddPost: React.FC = () => {
         <div className='flex flex-col gap-0.5'>
           <div className='text-md font-bold'>Photo</div>
           {/* Upload */}
-
           <div className='flex-center h-36 w-full flex-col gap-3 rounded-2xl border border-dotted border-neutral-900 px-6 py-4'>
             <Button className='size-10 rounded-xl border border-neutral-900 bg-transparent'>
               <UploadCloud />

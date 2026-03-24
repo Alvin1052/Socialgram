@@ -20,8 +20,8 @@ export const patchProfile = async (
 };
 
 export const getMyPost = async (
-  Params: TPayloadParams
+  Params?: TPayloadParams
 ): Promise<TResGetMyPost> => {
-  const res = await api.patch('/me', { params: Params });
+  const res = await api.get('/me/posts', { params: Params });
   return res.data;
 };
