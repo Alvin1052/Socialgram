@@ -44,7 +44,12 @@ export const PostDetail: React.FC<PostDialogProps> = ({ id }) => {
             {/* Profile */}
             <div className='flex items-center justify-between'>
               <div className='flex items-center gap-3'>
-                <UserSkeleton User={DetailPost?.author} className='size-10' />
+                <UserSkeleton
+                  name={DetailPost?.author?.name}
+                  userName={DetailPost?.author?.username}
+                  avatarUrl={DetailPost?.author?.avatarUrl ?? ''}
+                  className='size-10'
+                />
 
                 <div className='flex flex-col'>
                   <div className='text-sm font-bold'>
@@ -76,7 +81,9 @@ export const PostDetail: React.FC<PostDialogProps> = ({ id }) => {
                       {/* Profile */}
                       <div className='flex items-center gap-2'>
                         <UserSkeleton
-                          User={comment.author}
+                          name={comment.author.name}
+                          userName={comment.author.username}
+                          avatarUrl={comment.author.avatarUrl ?? ''}
                           className='size-10'
                         />
 

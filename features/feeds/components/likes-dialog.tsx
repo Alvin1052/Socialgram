@@ -48,7 +48,11 @@ const ListLikesCard: React.FC<ListLikesCardProps> = ({ User }) => {
   return (
     <div className='flex w-full items-center justify-between'>
       <div className='flex items-center gap-2'>
-        <UserSkeleton User={User} />
+        <UserSkeleton
+          name={User?.name}
+          userName={User?.username}
+          avatarUrl={User?.avatarUrl ?? ''}
+        />
         <div className='flex flex-col'>
           <div className='text-sm font-bold'>{User.name}</div>
           <div className='font-regular text-sm text-neutral-400'>

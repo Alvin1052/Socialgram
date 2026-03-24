@@ -69,7 +69,12 @@ const ListProfileName: React.FC<ListProfileNameProps> = ({
         className
       )}
     >
-      <UserSkeleton User={User} className='size-12' />
+      <UserSkeleton
+        name={User.name}
+        userName={User.username}
+        avatarUrl={User.avatarUrl ?? ''}
+        className='size-12'
+      />
       <div className='text-md flex flex-col'>
         <div className='font-bold'>{User.name}</div>
         <div>{User.username}</div>

@@ -20,7 +20,12 @@ const Profile: React.FC<ProfileProps> = ({ profile }) => {
         <div className='flex items-center justify-between'>
           {/* Profile */}
           <div className='flex items-center gap-3'>
-            <UserSkeleton User={profile} className='size-16' />
+            <UserSkeleton
+              name={profile?.name}
+              userName={profile?.username}
+              avatarUrl={profile?.avatarUrl}
+              className='size-16'
+            />
 
             <div className='flex flex-col'>
               <div className='text-md font-bold'>{profile?.name}</div>

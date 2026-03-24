@@ -19,7 +19,9 @@ const HeaderProfile = () => {
       {isToken ? (
         <Link href={`/profile`} className='flex items-center gap-3'>
           <UserSkeleton
-            User={ProfileUser.profile}
+            name={ProfileUser.profile.name}
+            userName={ProfileUser.profile.username}
+            avatarUrl={ProfileUser.profile.avatarUrl}
             className='flex-center size-12 object-fill text-3xl'
           />
 

@@ -1,25 +1,28 @@
 import { Initials } from '@/helper/convert-ui-text';
 import { cn } from '@/lib/utils';
-import { TUser } from '@/types/auth-types';
-import { TAuthor } from '@/types/general-types';
+
 import Image from 'next/image';
 
 interface UserSkeletonProps {
-  User: TAuthor | TUser;
+  name: string;
+  userName: string;
+  avatarUrl?: string;
   className?: string;
 }
 export const UserSkeleton: React.FC<UserSkeletonProps> = ({
-  User,
+  name,
+  userName,
+  avatarUrl,
   className,
 }) => {
   return (
     <>
-      {User?.avatarUrl && User?.avatarUrl ? (
+      {avatarUrl && avatarUrl ? (
         <Image
-          src={User?.avatarUrl}
+          src={avatarUrl}
           width={64}
           height={64}
-          alt={User?.name}
+          alt={name}
           className={cn(
             'flex-center size-16 rounded-full object-cover object-center',
             className
@@ -32,13 +35,7 @@ export const UserSkeleton: React.FC<UserSkeletonProps> = ({
             className
           )}
         >
-          {Initials(
-            User.name !== ''
-              ? User.name
-              : User.username !== ''
-                ? User.username
-                : 'Guest'
-          )}
+          {Initials(name !== '' ? name : userName !== '' ? userName : 'Guest')}
         </div>
       )}
     </>

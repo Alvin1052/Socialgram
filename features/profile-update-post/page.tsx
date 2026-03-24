@@ -9,10 +9,10 @@ import { useUpdateProfileForms } from './hooks/use-update-profile-forms';
 
 const UpdateProfile = () => {
   const { register } = useUpdateProfileForms();
-  const { ProfileUser, isLoading: isLoadingProfileUser } = useMe();
+  const { ProfileUser, isLoading: isLoadingProfileUser, isError } = useMe();
 
   if (isLoadingProfileUser || !ProfileUser) return <div>Loading...</div>;
-
+  if (isError) return <div>Error</div>;
   return (
     <div className='mt-10 flex w-full flex-col gap-6'>
       {/* Title */}
@@ -24,7 +24,12 @@ const UpdateProfile = () => {
       <form>
         {/* Profile */}
         <div>
-          <UserSkeleton User={ProfileUser} className='size-16' />
+          <UserSkeleton
+            name={ProfileUser?.data?.profile?.name ?? 'Guest'}
+            userName={ProfileUser?.data?.profile?.username ?? 'Guest'}
+            avatarUrl={ProfileUser?.data?.profile?.avatarUrl}
+            className='size-16'
+          />
           <Button>Change Photo</Button>
           <input type='file' {...register('avatar')} />
         </div>

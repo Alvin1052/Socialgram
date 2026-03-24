@@ -15,7 +15,11 @@ export const Post = ({ Post }: { Post: TPost }) => {
       {/* Profile */}
       <Link href={`/${Post?.author?.username}`}>
         <div className='flex items-center gap-3'>
-          <UserSkeleton User={Post?.author} />
+          <UserSkeleton
+            name={Post?.author?.name}
+            userName={Post?.author?.username}
+            avatarUrl={Post?.author?.avatarUrl ?? ''}
+          />
           <div className='flex flex-col'>
             <div className='text-lg font-semibold'>
               {CapitalizeFirstLetter(Post?.author?.username)} {Post?.id}
